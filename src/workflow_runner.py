@@ -12,7 +12,7 @@ def get_snp_500_companies(url):
         company = Company(row['Symbol'])
         company.name = row['Security']
         company.sector = row['GICS Sector']
-        company.industry = row['GICS Sub Sector']
+        company.industry = row['GICS Sub-Industry']
         company.date_added = row['Date first added']
         companies.append(company)
     return companies
@@ -20,7 +20,7 @@ def get_snp_500_companies(url):
 
 def get_ftse_companies(url):
     companies = []
-    table = pd.read_html(url)[0]
+    table = pd.read_html(url)[3]
     for index, row in table.iterrows():
         company = Company(row['EPIC'])
         company.name = row['Company']
@@ -32,14 +32,14 @@ def get_ftse_companies(url):
 async def run(config):
     companies_map = {
         Index.SNP500: get_snp_500_companies,
-        Index.FTSE100: get_ftse_companies,
-    }
+        Index.FTSE100: get_ftse_companies
 
+    }
     url = config.get_url()
 
     func_to_get_data = companies_map.get(config.index, None)
     if func_to_get_data is None:
-        raise KeyError(f'{input.index} is not supported')
+        raise KeyError(f'{input.index} is not suppported')
 
     companies = func_to_get_data(url)
     return [c.name for c in companies]

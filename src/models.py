@@ -15,7 +15,7 @@ class Company:
 
 
 class Index(str, Enum):
-    FTSE100 = "FTSE100"
+    FTSE100 = "FTSE 100"
     SNP500 = "S&amp;P 500"
     DOWJONE = "Dow Jones"
 
