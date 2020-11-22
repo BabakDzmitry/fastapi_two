@@ -1,0 +1,1 @@
+[Урок](https://dev-gang.ru/article/sozdavaite-i-razmesczaite-prilozhenija-fast-data-science-s-pomosczu-fastapi-mqsmyplptv/)
